@@ -26,7 +26,11 @@ function readOutLoud(message){
     const speech = new SpeechSynthesisUtterance();
 
     // characteristics of the voice
+    speech.lang = "en-GB";
+    speech.rate = 0.8;
     speech.volume = 1;
+
+    speech.voice
 
     // content of the spoken message
     speech.text = message;
