@@ -2,14 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Max AI</title>
+    <script defer src="static/face-api.min.js"></script>
+    <script defer src="static/see.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            position: absolute;
+
+        }
+    </style>
 </head>
 <body>
     <div>
         Max is online!
     </div>
+    <video id="video" width="720" height="560" autoplay muted></video>
     <button class="talk">Talk</button>
     <div class="content"></div>
-    <script src="static/app.js"></script>
+    <script src="static/speak.js"></script>
 </body>
 </html>

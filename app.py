@@ -9,6 +9,11 @@ def hello_world():
     return render_template("index.html")
 
 
+@app.route('/test')
+def test():
+    return render_template("test.html")
+
+
 if __name__ == "__main__":
     port = int(os.getenv('PORT'))
     app.run(debug=True, port=port, host='0.0.0.0')
