@@ -2,7 +2,7 @@
 const btn = document.querySelector('.talk');
 
 // the place on the main page to display the response to the user
-const content = document.querySelector('.content');
+const content = document.querySelector('.console');
 
 // allows the ai to listen
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -35,11 +35,6 @@ recognition.onresult = function(event) {
     speak(transcript);
 }
 
-// add the listener to the button
-btn.addEventListener('click', () => {
-    recognition.start();
-})
-
 // speak the given message
 function speak(message){
     // set the content of the spoken message
@@ -54,3 +49,6 @@ speech.onend = function(event){
     // the ai starts listening as soon as it stops talking
     recognition.start();
 }
+
+// start listening
+recognition.start();
