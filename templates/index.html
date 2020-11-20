@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Max AI</title>
 
-    <!--enables sight and face recognition-->
-    <script defer src="static/face-api.min.js"></script>
-    <script defer src="static/see.js"></script>
-
-    <!--enables speech-->
-    <script defer src="static/speak.js"></script>
+    <!--style for the background -->
+    <script defer src="static/particle.min.js"></script>
 
     <!--style sheet for the UI-->
     <link rel="stylesheet" href="static/max.css">
+
+    <!--enables sight and face recognition-->
+    <script defer src="static/see.js"></script>
+
 </head>
 <body>
-    <!--video screen -->
-    <video id="video" width="720" height="560" autoplay muted></video>
-    <div class="console"></div>
+    <!-- displays the moving background -->
+    <div id="particle-canvas"></div>
+
+    <!-- main content -->
+    <div class="content">
+        <!-- video display -->
+        <video class="panel" autoplay="true" id="video"></video>
+        <!-- console -->
+        <div class="console panel">this is a test of the emergency broadcast system</div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script defer src="static/particle.min.js"></script>
+    <style>
+        html,
+        body {
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        }
+
+        #particle-canvas {
+          width: 100%;
+          height: 100%;
+        }
+        .content{
+            z-index: 9;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+        }​
+    </style>
+</head>
+<body>
+        <div class="content">foreground</div>
+        <div id="particle-canvas"></div>
+</body>
+</html>
