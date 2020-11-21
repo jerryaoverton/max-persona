@@ -26,18 +26,29 @@ body {
 
 /* video display */
 video {
-    width: 70%;
+    width: 40%;
     height: auto;
 }
 
 /* output console */
 .console{
-    background-color: blue;
+    background-color: black;
 }
 
 /* displays output as responsible panels */
 .panel {
     flex: 1 1 150px; /*  Stretching: */
     margin: 5px;
+    border-style: double;
+    border-color: gray;
 }
 
+.panel-heading {
+    color: #00b7eb;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.panel-text {
+    color: gray;
+   font-family: "Courier New", Courier, monospace;
+}

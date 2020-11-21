@@ -13,6 +13,11 @@
     <!--enables sight and face recognition-->
     <script defer src="static/see.js"></script>
 
+    <!-- syntax highlighting on the output console-->
+    <link rel="stylesheet" href="static/atelier-forest-dark.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
 </head>
 <body>
     <!-- displays the moving background -->
@@ -23,7 +28,14 @@
         <!-- video display -->
         <video class="panel" autoplay="true" id="video"></video>
         <!-- console -->
-        <div class="console panel">this is a test of the emergency broadcast system</div>
+        <pre>
+            <code class="panel">
+console = {
+    "foo": 123,
+    "bar": [bar1, bar2, bar3],
+}
+            </code>
+        </pre>
     </div>
 </body>
 </html>
