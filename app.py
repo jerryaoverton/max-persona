@@ -3,9 +3,10 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/background')
+
+@app.route('/layout')
 def background():
-    return render_template("background.html")
+    return render_template("layout2.html")
 
 
 @app.route('/')

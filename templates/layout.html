@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>M.A.X. My Artificial Intelligence Experiment</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--main styles -->
+    <link rel="stylesheet" href="static/style.css">
+
+    <!-- layout of the main content -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    <!--sight and face recognition-->
+    <script defer src="static/see.js"></script>
+</head>
+
+
+<body class="background-image w3-light-grey">
+
+    <!-- w3-content defines a container for fixed size centered content,
+    and is wrapped around the whole page content, except for the footer in this example -->
+    <div class="w3-content" style="max-width:1400px">
+
+        <!-- page header -->
+        <header class="w3-container w3-center w3-padding-32">
+            <h1><b>M.A.X.</b></h1>
+            <p><b>M</b>y <b>A</b>rtificial Intelligence e<b>X</b>periment. Status: <span class="w3-tag">Online</span></p>
+        </header>
+
+        <!-- main content grid -->
+        <div class="w3-row">
+
+            <!-- left panel of main content grid -->
+            <div class="w3-col l4">
+                <!-- object recognition pane -->
+                <div class="w3-card-4 w3-margin w3-white">
+                    <!-- video display -->
+                    <video style="width:100%;" autoplay="true" id="video"></video>
+
+                    <!-- label for video display -->
+                    <div class="w3-container">
+                        <h5>Visual Object Detection: <span class="w3-opacity">Active</span></h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- right panel of main content -->
+            <div class="w3-col l8 s12">
+                <!-- console pane -->
+                <div class="w3-card w3-margin w3-white">
+                    <div class="console">
+                        console = {
+                        "foo": 123,
+                        "bar": [bar1, bar2, bar3],
+                        }
+                    </div>
+                    <div class="w3-container w3-white">
+                        <h5>Terminal >_ <span class="w3-opacity">Active</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

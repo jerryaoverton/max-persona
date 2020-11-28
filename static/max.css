@@ -22,25 +22,37 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 65%;
+    height: 85%;
+    border-style: double;
+    border-color: gray;
 }
 
 /* video display */
 video {
-    width: 40%;
+    width: 100px;
     height: auto;
+}
+
+code {
+    display: inline-block;
+    width: 175px; /* Whatever. The <code>'s width will change */
+    height: 100%;
 }
 
 /* output console */
 .console{
+    width: 375px;
     background-color: black;
 }
 
 /* displays output as responsible panels */
 .panel {
-    flex: 1 1 150px; /*  Stretching: */
+    flex: 1 1; /*  Stretching: */
     margin: 5px;
     border-style: double;
     border-color: gray;
+    position: relative;
 }
 
 .panel-heading {
@@ -49,6 +61,6 @@ video {
 }
 
 .panel-text {
-    color: gray;
+   color: gray;
    font-family: "Courier New", Courier, monospace;
 }
