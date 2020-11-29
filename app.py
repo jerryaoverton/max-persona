@@ -4,11 +4,6 @@ import os
 app = Flask(__name__)
 
 
-@app.route('/layout')
-def background():
-    return render_template("layout2.html")
-
-
 @app.route('/')
 def index():
     return render_template("index.html")

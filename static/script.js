@@ -18,7 +18,7 @@ function startVideo() {
 var interval;
 
 function detectFaces(){
-    const canvas = document.getElementById('canvas');
+    const canvas = document.getElementById('c1');
 
     const displaySize = { width: video.offsetWidth, height: video.offsetHeight };
     faceapi.matchDimensions(canvas, displaySize);
@@ -31,7 +31,7 @@ function detectFaces(){
         faceapi.draw.drawDetections(canvas, resizedDetections)
         faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
         faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-        }, 100);
+        }, 300);
 }
 
 window.addEventListener('resize', detectFaces);

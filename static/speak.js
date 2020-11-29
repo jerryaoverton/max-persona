@@ -1,12 +1,10 @@
-// connects to the button on the main page that starts the AI listening
-const btn = document.querySelector('.talk');
-
 // the place on the main page to display the response to the user
-const content = document.querySelector('.console');
+const content =document.getElementById("ui-participant");
 
 // allows the ai to listen
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
+
 // continue listening until the user says something
 recognition.continuous = true;
 
@@ -29,7 +27,7 @@ recognition.onresult = function(event) {
 
     // transcribe what was recognized
     const transcript = event.results[current][0].transcript;
-    content.textContent = transcript;
+    content.innerHTML = transcript;
 
     // repeat back what was recognized
     speak(transcript);
@@ -50,5 +48,12 @@ speech.onend = function(event){
     recognition.start();
 }
 
-// start listening
-recognition.start();
+function startListening(){
+    // start listening
+    recognition.start();
+}
+
+function stopListening(){
+    // start listening
+    recognition.stop();
+}
