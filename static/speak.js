@@ -1,5 +1,5 @@
 // the place on the main page to display the response to the user
-const content =document.getElementById("ui-participant");
+const content = document.getElementById("ui-participant");
 
 // allows the ai to listen
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -18,16 +18,20 @@ speech.volume = 1; // maximum speaking
 
 // turn on the mic and begin listening
 recognition.onstart = function() {
-    console.log('voice is activated. you can speak to microphone')
+    log("listening for verbal input");
 }
 
 // triggered when the speech recognizer recognizes a result
 recognition.onresult = function(event) {
+
+    log("verbal input recognized")
+
     const current = event.resultIndex;
 
     // transcribe what was recognized
     const transcript = event.results[current][0].transcript;
     content.innerHTML = transcript;
+    log("verbal input transcribed");
 
     // repeat back what was recognized
     speak(transcript);
@@ -40,6 +44,8 @@ function speak(message){
 
     // speak
     window.speechSynthesis.speak(speech);
+
+    log("verbal response given");
 }
 
 // fired when the ai stops speaking

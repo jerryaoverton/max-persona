@@ -171,6 +171,60 @@
     </div>
 
     <script>
+      //holds a list of log entry items
+      //
+      var logBuffer = [];
+
+      function timestamp(){
+        // returns now formatted in a human-readable form
+        //
+        const time = new Date(Date.now());
+
+        year = time.getFullYear();
+        month = time.getMonth();
+        day = time.getDate();
+
+        hour = time.getHours();
+        min = time.getMinutes();
+        sec = time.getSeconds();
+
+        formatted_time = `[${year}-${month}-${day} ${hour}:${min}:${sec}]`;
+        return formatted_time;
+      }
+
+      function activateLog(){
+        // spawn a log thread that checks the log queue and writes a log
+        // entry at regular intervals
+        // this method makes sure that log entries are displayed at
+        // human-readable speeds
+        //
+        logThread = setInterval(async () => {
+          // write the next buffered log message to the display
+          //
+          if (logBuffer.length > 0) {
+            outputLog(logBuffer.pop());
+          }
+        }, 1000);
+      }
+
+      function log(msg){
+        // add a message to the beginning of the log buffer for display later
+        // items are removed from the end of the buffer first
+        //
+        logBuffer.unshift(msg);
+      }
+
+      function outputLog(msg){
+        // logs the message to the UI console
+        //
+        var paragraph = document.createElement("p");
+        var text = document.createTextNode("> " + timestamp() + " " + msg);
+        paragraph.appendChild(text);
+
+        var console = document.getElementById("ui-alone");
+        console.insertBefore(paragraph, console.firstChild);
+       }
+
       // keeps track of options selected by the user
       //
       let isCameraOn, isMicOn, isSpeechOn, isActive;
@@ -217,9 +271,10 @@
               cameraIndicator.src="static/icons/icon-camera-on.svg";
             })
             .catch(function (err) {
-              console.log("Something went wrong!");
+              log("Error while turning on the camera");
             });
         }
+        log("camera turned on");
       }
 
       function turnCameraOff(){
@@ -234,6 +289,8 @@
 
         isCameraOn = false;
         cameraIndicator.src="static/icons/icon-camera-off.png";
+
+        log("camera turned off");
       }
 
       function toggleMic(){
@@ -250,12 +307,16 @@
         startListening();
         micIndicator.src = "static/icons/icon-microphone-on.svg";
         isMicOn = true;
+
+        log("mic turned on");
       }
 
       function turnMicOff(){
         stopListening();
         micIndicator.src = "static/icons/icon-microphone-off.png";
         isMicOn = false;
+
+        log("mic turned off");
       }
 
 
@@ -272,11 +333,15 @@
       function turnSpeechOn(){
         speechIndicator.src="static/icons/icon-speech-on.png";
         isSpeechOn = true;
+
+        log("speech turned on");
       }
 
       function turnSpeechOff(){
         speechIndicator.src="static/icons/icon-speech-off.png";
         isSpeechOn = false;
+
+        log("speech turned off");
       }
 
       function toggleStatus(){
@@ -296,6 +361,8 @@
         turnSpeechOff();
         statusIndicator.innerHTML = "Inactive";
         isActive = false;
+
+        log("system deactivated");
       }
 
       function activate(){
@@ -303,8 +370,11 @@
         turnCameraOn();
         turnMicOn();
         turnSpeechOn();
+        activateLog();
         statusIndicator.innerHTML = "Active";
         isActive = true;
+
+        log("system activated");
       }
 
     </script>
