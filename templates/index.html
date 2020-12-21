@@ -9,6 +9,14 @@
         font-weight: 800;
         color: #ffffff;
       }
+      .timestamp {
+        font-family: 'Courier New', monospace;
+        color: red;
+      }
+      .consoleMessage {
+        font-family: 'Courier New', monospace;
+        color: black;
+      }
       video {
         width:100%;
         height:auto;
@@ -125,6 +133,10 @@
     <script defer src="/static/face-api.min.js"></script>
     <script defer src="/static/see.js"></script>
 
+    <!--connects to behavioral system-->
+    <script src="/static/socket.io.js"></script>
+    <script src="/static/connect.js"></script>
+
   </head>
   <body onload="run()">
 
@@ -218,9 +230,24 @@
         // logs the message to the UI console
         //
         var paragraph = document.createElement("p");
-        var text = document.createTextNode("> " + timestamp() + " " + msg);
-        paragraph.appendChild(text);
 
+        // build a timestamp
+        const timeStampSPAN = document.createElement("span");
+        timeStampSPAN.className = "timestamp";
+        var stamp = document.createTextNode("> " + timestamp() + " ");
+        timeStampSPAN.appendChild(stamp);
+
+        // build a message
+        const msgSPAN = document.createElement("span");
+        msgSPAN.className = "consoleMessage";
+        var message = document.createTextNode(msg);
+        msgSPAN.appendChild(message);
+
+        // combine the timestamp and message
+        paragraph.appendChild(timeStampSPAN);
+        paragraph.appendChild(msgSPAN);
+
+        // write the message and timestamp to the console
         var console = document.getElementById("ui-alone");
         console.insertBefore(paragraph, console.firstChild);
        }

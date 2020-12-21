@@ -34,7 +34,10 @@ recognition.onresult = function(event) {
     log("verbal input transcribed");
 
     // repeat back what was recognized
-    speak(transcript);
+    //speak(transcript);
+
+    // transmit transcript to artificial nervous system for processing
+    signalANS(transcript);
 }
 
 // speak the given message
@@ -43,6 +46,7 @@ function speak(message){
     speech.text = message;
 
     // speak
+    stopListening();
     window.speechSynthesis.speak(speech);
 
     log("verbal response given");
@@ -63,3 +67,13 @@ function stopListening(){
     // start listening
     recognition.stop();
 }
+
+// the chrome browser deactivates voice recognition after so many
+// seconds of not receiving input. this thread makes sure that
+// the voice recognition stays open
+//
+voiceInterval = setInterval(async () => {
+        if (isMicOn) {
+            startListening();
+        }
+}, 2000);
