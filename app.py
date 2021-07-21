@@ -3,7 +3,6 @@ from flask_socketio import SocketIO
 import os
 from simpletransformers.conv_ai import ConvAIModel, ConvAIArgs
 import requests
-import json
 
 # needed to launch the app
 app = Flask(__name__)
@@ -50,13 +49,7 @@ def handle_signal(msg):
     req = requests.post(url, data=params, headers={'Content-Type': 'application/x-www-form-urlencoded'})
     data = req.json()
     response = data[0]['text']
-
-    if response != "":
-        socketio.emit("response", response)
-    else:
-        # if the behavior doesn't recognise the message, try the model
-        response, history = model.interact_single(msg, history, personality=personality)
-        socketio.emit("response", response)
+    socketio.emit("response", response)
 
     print(history)
 
